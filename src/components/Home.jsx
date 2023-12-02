@@ -123,14 +123,12 @@ const AddTocart = (product) => {
   }
 };
 
-
-
 return (
   <>
   
     <Navbar user={user} totaProducts={totaProducts} />
     <div className="container-fluid mt-4">
-      <h1 className="text-center">Products</h1>
+      <h1 className="text-center">😺 Home 😺</h1>
       <Productlist products={products} AddTocart={AddTocart} />
     </div>
     <motion.div animate={{ x: 100 }} />
