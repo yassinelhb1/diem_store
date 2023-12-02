@@ -29,7 +29,7 @@ export const Navbar = ({ user,totaProducts }) => {
             <div className="top-right-links">
                 {!user && <>
                     <div><Link className="navlink" to="singup">SIGN UP</Link></div>
-                    <div><Link className="navlink a" to="login">LOG IN</Link></div>
+                    <div><Link className="navlink a m-2" to="login">LOG IN</Link></div>
                     
                 </>}
                 {user && <>

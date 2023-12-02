@@ -46,7 +46,7 @@ export const Login= () => {
             <div className="btn-box">
                 <span>Don't have an account Sing up</span>
                 <Link to="/singup" className="Link"> Here</Link>
-                <button type="submit" className="btn btn-succes btn-md">Log In</button>
+                <button type="submit" className="btn btn-succes btn-md m-2">Log In</button>
             </div>
 
            </form>

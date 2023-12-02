@@ -67,7 +67,7 @@ export const Singup =()=> {
             <div className="btn-box">
                 <span>Already have an account Login</span>
                 <Link to="/login" className="Link">Here</Link>
-                <button type="submit" className="btn btn-succes btn-md">Sign Up</button>
+                <button type="submit" className="btn btn-succes btn-md m-2">Sign Up</button>
             </div>
 
            </form>
