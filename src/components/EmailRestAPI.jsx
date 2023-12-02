@@ -4,9 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const EmailRestAPI = ({totalPrice,userName}) => {
 
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,10 +16,10 @@ const EmailRestAPI = ({totalPrice,userName}) => {
       template_id: "template_94ucrba",
       user_id: "2aE16zJbhZLCxymLk",
       template_params: {
-        from_name: name,
+        total: totalPrice+" DT",
         from_email: email,
         to_name: userName,
-        message:totalPrice,
+       
       }
     };
 
@@ -28,9 +27,9 @@ const EmailRestAPI = ({totalPrice,userName}) => {
     try {
       const res = await axios.post("https://api.emailjs.com/api/v1.0/email/send", data);
       console.log(res.data);
-      setName('');
+      
       setEmail('');
-      setMessage('');
+      
     } catch (error) {
       console.error(error);
     }
@@ -38,45 +37,72 @@ const EmailRestAPI = ({totalPrice,userName}) => {
 
   return (
     <div className="container">
-      <form className="form-group" autoComplete="off" onSubmit={handleSubmit}  noValidate>
-        <div className='mb-3'>
-          <label htmlFor='name' className='form-label'>
-            Your Name
-          </label>
-          <input
-            type='text'
-            className="form-group"
-            id='name'
-            placeholder='Your Name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <div className='invalid-feedback'>Please enter your name.</div>
-        </div>
-
+      <form className="payment-form needs-validation" autoComplete="off" onSubmit={handleSubmit} noValidate>
+  
         <div className='mb-3'>
           <label htmlFor='email' className='form-label'>
-            Your Email
+            Adresse e-mail
           </label>
           <input
             type='email'
-            className="form-group"
+            className="form-control"
             id='email'
-            placeholder='Your Email'
+            placeholder='Votre adresse e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <div className='invalid-feedback'>Please enter a valid email address.</div>
+          <div className='invalid-feedback'>Veuillez saisir une adresse e-mail valide.</div>
         </div>
-
-         <button type='submit' className='btn btn-primary'>
+  
+        <div className='mb-3'>
+          <label htmlFor='cardNumber' className='form-label'>
+            Numéro de carte de crédit
+          </label>
+          <input
+            type='text'
+            className="form-control"
+            id='cardNumber'
+            placeholder='---- ---- ---- ----'
+            required
+          />
+        </div>
+  
+        <div className='row mb-3'>
+          <div className='col-md-6'>
+            <label htmlFor='expirationDate' className='form-label'>
+              Date d'expiration
+            </label>
+            <input
+              type='text'
+              className="form-control"
+              id='expirationDate'
+              placeholder='MM/AA'
+              required
+            />
+          </div>
+          <div className='col-md-6'>
+            <label htmlFor='cvv' className='form-label'>
+              Code de sécurité (CVV)
+            </label>
+            <input
+              type='text'
+              className="form-control"
+              id='cvv'
+              placeholder='----'
+              required
+            />
+          </div>
+        </div>
+  
+        <button type='submit' className='btn btn-primary'>
           Payer
-        </button> 
+        </button>
       </form>
     </div>
   );
+  
+  
 }
 
 export default EmailRestAPI;
